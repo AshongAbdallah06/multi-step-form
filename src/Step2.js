@@ -7,13 +7,18 @@ import { AppContext } from './App';
 
 const Step2 = () => {
 
-    const { monthly, setMonthly } = useContext(AppContext);
+    const { 
+        monthly, 
+        setMonthly, 
+        chosenPlan, 
+        addClass 
+    } = useContext(AppContext);
     const [monthIsToggled, setMonthIsToggled] = useState(true);
 
     const handleToggle = () => {
         setMonthIsToggled(!monthIsToggled);
-        setMonthly(!monthly); // Update monthly directly based on monthIsToggled
-    };    
+        setMonthly(!monthly);
+    };
 
     return (
         <div className="right-section">
@@ -25,28 +30,34 @@ const Step2 = () => {
             </header>
 
             <div className="plans">
-                <div>
-                    <img src={arcadeIcon} alt="" />
-                    <p className="name">Arcade</p>
-                    <p className="price">$9/mo</p>
-                    <p className="free-months">
-                        {!monthly ? "2 months free" : ""}
-                    </p>
+                <div 
+                    className={`arcade ${chosenPlan === 'arcade' ? 'chosen' : ''}`} onClick={() => addClass('arcade')}>
+
+                        <img src={arcadeIcon} alt="" />
+                        <p className="name">Arcade</p>
+                        <p className="price">$9/{monthly ? "mo" : "yr"}</p>
+                        <p className="free-months">
+                            {!monthly ? "2 months free" : ""}
+                        </p>
                 </div>
 
-                <div>
+                <div 
+                    className={`advanced ${chosenPlan === 'advanced' ? 'chosen' : ''}`} onClick={() => addClass('advanced')}>
+
                     <img src={advancedIcon} alt="" />
                     <p className="name">Advanced</p>
-                    <p className="price">$12/mo</p>
+                    <p className="price">$12/{monthly ? "mo" : "yr"}</p>
                     <p className="free-months">
                         {!monthly ? "2 months free" : ""}
                     </p>
                 </div>
 
-                <div>
+                <div
+                    className={`pro ${chosenPlan === 'pro' ? 'chosen' : ''}`} onClick={() => addClass('pro')}>
+                    
                     <img src={proIcon} alt="" />
                     <p className="name">Pro</p>
-                    <p className="price">$15/mo</p>
+                    <p className="price">$15/{monthly ? "mo" : "yr"}</p>
                     <p className="free-months">
                         {!monthly ? "2 months free" : ""}
                     </p>

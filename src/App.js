@@ -11,45 +11,83 @@ export const AppContext = createContext();
 
 function App() {
     const [monthly, setMonthly] = useState(true);
-    
+    const [chosenPlan, setChosenPlan] = useState('');
+    const [addOns, setAddOns] = useState({
+        onlineService: false,
+        largerStorage: false,
+        customizableProfile: false
+    });
+
+    const handleToggle = (addOn) => {
+        setAddOns(prevState => ({
+            ...prevState,
+            [addOn]: !prevState[addOn]
+        }));
+    };
+
+    const addClass = (nameOfClass) => {
+        setChosenPlan(nameOfClass);
+    };
+
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
     return (
         <main className="App">
-            <AppContext.Provider value={{ monthly, setMonthly}}>
+            <AppContext.Provider 
+                value={
+                    { 
+                        monthly, 
+                        setMonthly, 
+                        fullName, 
+                        setFullName, 
+                        email, 
+                        setEmail, 
+                        phoneNumber, 
+                        setPhoneNumber, 
+                        chosenPlan, 
+                        setChosenPlan,
+                        addClass,
+                        addOns, 
+                        handleToggle
+                    }
+                }>
                 <Router>
                     <img src={desktopSidebar} alt="" className='sidebar-img' />
 
                     <div className='steps'>
-                        <Link to='/' className='step'>
+                        <div to='/' className='step'>
                             <button className='number'>1</button>
                             <div className='inline-block'>
                                 <p className='label'>STEP 1</p>
                                 <p className='title'>YOUR INFO</p>                            
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link to='/select-your-plan' className='step'>
+                        <div to='/select-your-plan' className='step'>
                             <button className='number'>2</button>
                             <div className='inline-block'>
                                 <p className='label'>STEP 2</p>
                                 <p className='title'>SELECT PLAN</p>                            
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link to='/add-ons' className='step'>
+                        <div to='/add-ons' className='step'>
                             <button className='number'>3</button>
                             <div className='inline-block'>
                                 <p className='label'>STEP 3</p>
                                 <p className='title'>ADD-ONS</p>
                             </div>
-                        </Link>
+                        </div>
 
-                        <Link to='/summary' className='step'>
+                        <div to='/summary' className='step'>
                             <button className='number'>4</button>
                             <div className='inline-block'>
                                 <p className='label'>STEP 4</p>
                                 <p className='title'>SUMMARY</p>
                             </div>
-                        </Link>
+                        </div>
                     </div>
 
 

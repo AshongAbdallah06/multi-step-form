@@ -1,15 +1,30 @@
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AppContext } from "./App";
 
 function Step1() {
+    const navigate = useNavigate(); 
+
+    const 
+        { 
+            fullName, 
+            setFullName, 
+            email, 
+            setEmail,
+            phoneNumber,
+            setPhoneNumber 
+        } = useContext(AppContext);
 
     const schema = yup.object().shape({
-        name: yup.string().min(3).required("Please enter a valid name"),
+        name: yup.string().min(3, "Name must be at least 3 characters").required("Please enter a valid name"),
+        
         email: yup.string().email("Please enter a valid email").required("Please enter a valid email"),
+
         phoneNumber: yup.string()
-            .matches(/^\d{10}$/, "Phone number must be exactly 10 characters")
+            .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
             .required("Please enter a valid phone number")
     });
 
@@ -17,46 +32,68 @@ function Step1() {
         resolver: yupResolver(schema)
     });
 
+
+
     const onSubmit = (data) => {
-        console.log(data)
-    }
+        if (Object.keys(errors).length === 0) {
+            console.log(data);
+            navigate('/select-your-plan');
+        }
+    };
 
     return (
         <div className="right-section">
             <header>
                 <h1>Personal info</h1>
                 <p className="message">
-                    Please provide your name, email address and phone number.
+                    Please provide your name, email address, and phone number.
                 </p>                
             </header>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label htmlFor="name">Name</label>
-                    <input type="text" placeholder="e.g. Stephen King" {...register("name")} />
+                    <input 
+                        type="text" 
+                        {...register("name")} 
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="e.g. Stephen King" 
+                    />
                     <p className="error">{errors.name?.message}</p>
                 </div>
 
                 <div>
-                    <label htmlFor="name">Email Address</label>
-                    <input type="email" placeholder="e.g. stephenking@lorem.com"  {...register("email")} />
+                    <label htmlFor="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        {...register("email")} 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="e.g. stephenking@lorem.com"  
+                    />
                     <p className="error">{errors.email?.message}</p>
                 </div>
 
                 <div>
-                    <label htmlFor="name">Phone Number</label>
-                    <input type="text" placeholder="e.g. 0234567891"  {...register("phoneNumber")} />
+                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <input 
+                        type="tel"
+                        pattern="[0-9]{10}"
+                        max={10}
+                        placeholder="e.g. 0234567891"  
+                        {...register("phoneNumber")} 
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
                     <p className="error">{errors.phoneNumber?.message}</p>
                 </div>
 
                 <div className="bottom one">
-                    {/* <Link to='/select-your-plan'> */}
-                        <button type="submit" className="next">Next Step</button>
-                    {/* </Link> */}
+                    <button type="submit" className="next">Next Step</button>
                 </div>
             </form>
         </div>
-
     );
 }
 

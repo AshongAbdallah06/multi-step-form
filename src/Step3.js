@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from './App';
 
 const Step3 = () => {
-    const { monthly } = useContext(AppContext);
+    const { monthly, addOns, handleToggle } = useContext(AppContext);
+
 
     return (
         <div className="right-section">
@@ -15,8 +16,11 @@ const Step3 = () => {
             </header>
 
             <div className="add-ons">
-                <div className='cont'>
-                    <input type="checkbox" />
+                <div
+                    className='cont'
+                    onClick={() => handleToggle('onlineService')}
+                >
+                    <input type="checkbox" checked={addOns.onlineService} readOnly />
                     <div className='text'>
                         <p className='label'>Online service</p>
                         <p className='info'>Access to multiplayer games</p>
@@ -24,8 +28,11 @@ const Step3 = () => {
                     <span>+$1/{monthly ? "mo" : "yr"}</span>
                 </div>
 
-                <div className='cont'>
-                    <input type="checkbox" />
+                <div
+                    className='cont'
+                    onClick={() => handleToggle('largerStorage')}
+                >
+                    <input type="checkbox" checked={addOns.largerStorage} readOnly />
                     <div className='text'>
                         <p className='label'>Larger storage</p>
                         <p className='info'>Extra 1TB of cloud drive</p>
@@ -33,8 +40,10 @@ const Step3 = () => {
                     <span>+$2/{monthly ? "mo" : "yr"}</span>
                 </div>
 
-                <div className='cont' onClick={() => console.log(monthly)}>
-                    <input type="checkbox" />
+                <div
+                    className='cont'
+                    onClick={() => handleToggle('customizableProfile')}>
+                    <input type="checkbox" checked={addOns.customizableProfile} readOnly />
                     <div className='text'>
                         <p className='label'>Customizable profile</p>
                         <p className='info'>Custom theme on your profile</p>
@@ -50,7 +59,7 @@ const Step3 = () => {
                 </Link>
             </div>
         </div>
-        )
+    );
 }
 
-export default Step3
+export default Step3;

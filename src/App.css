@@ -362,3 +362,149 @@ input::placeholder {
     font-size: 20px;
     color: hsl(243, 100%, 62%);
 }
+
+
+
+@media (max-width: 930px) {
+    .App {
+        flex-direction: column;
+        width: 100%;
+        height: 700px;
+        align-items: center;
+        background-color: hsl(210, 75%, 95%);
+        position: relative;
+        padding: 0;
+    }
+
+    .header-img {
+        height: 200px;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .inline-block {
+        display: none;
+    }
+
+    /* STEP 1 */
+    .right-section {
+        background-color: white;
+        padding: 55px 40px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        position: absolute;
+        width: 80%;
+        height: 90vh;
+        margin: 0;
+        top: 120px;
+        box-shadow: 0 0 10px rgba(151, 151, 151, 0.5);
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .bottom {
+        bottom: -100px;
+        position: absolute;
+        left: -50px;
+        background-color: white;
+        z-index: 99;
+        width: 450px;
+        padding: 20px 0;
+        padding-right: 60px;
+        padding-left: 50px;
+        margin: 0;
+    }
+
+    .bottom.one {
+        bottom: -100px;
+        position: absolute;
+        left: -50px;
+        background-color: white;
+        z-index: 99;
+        width: 450px;
+        padding: 20px 0;
+        padding-right: 60px;
+        margin: 0;
+    }
+
+    .error {
+        position: absolute;
+        top: 10px;
+        margin: 0;
+        font-size: 8px;
+    }
+
+
+    /* STEP 2 */
+    .plans {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .plans div {
+        display: flex;
+        align-items: center;
+        height: 70px;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        height: 50px;
+        margin-left: 20px;
+        width: 100px;
+    }
+
+    .plans div .name {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .plans div .price {
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .free-months {
+        font-size: 12px;
+    }
+
+
+    /* STEP 3 */
+    .add-ons .label {
+        font-size: 13px;
+    }
+    
+    .add-ons .info {
+        font-size: 10px;
+    }
+
+    .add-ons .cont span {
+        font-size: 10px;
+    }
+
+
+    /* STEP 4 */
+    .summary {
+        padding: 0;
+        margin-top: 20px;
+    }
+
+}
+
+
+@media (max-width: 321px) {
+    .right-section {
+        margin-left: 60px;
+    }
+}

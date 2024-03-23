@@ -1,6 +1,7 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import desktopSidebar from './images/bg-sidebar-desktop.svg';
+import mobileSidebar from './images/bg-sidebar-mobile.svg';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -37,6 +38,7 @@ function App() {
         phoneNumber: null
     });
 
+
     return (
         <main className="App">
             <AppContext.Provider 
@@ -48,15 +50,17 @@ function App() {
                         setUserDetails,
                         chosenPlan, 
                         setChosenPlan,
-                        // chosenPlanPrice, 
-                        // setChosenPlanPrice,
                         addClass,
                         addOns, 
                         handleToggle
                     }
                 }>
                 <Router>
-                    <img src={desktopSidebar} alt="" className='sidebar-img' />
+                <picture>
+                    <source srcset={desktopSidebar} media="(min-width: 930px)" />
+                    <img className='header-img' src={mobileSidebar} />
+                </picture>
+                {/* <img src={} alt="" className='sidebar-img' /> */}
 
                     <div className='steps'>
                         <div to='/' className='step'>

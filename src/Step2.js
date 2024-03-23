@@ -40,12 +40,14 @@ const Step2 = () => {
                     }}
                 >
                     <img src={arcadeIcon} alt="" />
-                    <p className="name">Arcade</p>
-                    <p className="price">
-                        {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
+                    <p className='mobile'>
+                        <p className="name">Arcade</p>
+                        <p className="price">
+                            {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
+                        </p>
                     </p>
                     <p className="free-months">
-                        {!monthly ? "2 months free" : ""}
+                            {!monthly ? "2 months free" : ""}
                     </p>
                 </div>
 
@@ -56,12 +58,14 @@ const Step2 = () => {
                     }}
                 >
                     <img src={advancedIcon} alt="" />
-                    <p className="name">Advanced</p>
-                    <p className="price">
-                        {monthly ? "$12" : "$120"}/{monthly ? "mo" : "yr"}
+                    <p className='mobile'>
+                        <p className="name">Advanced</p>
+                        <p className="price">
+                            {monthly ? "$12" : "$120"}/{monthly ? "mo" : "yr"}
+                        </p>
                     </p>
                     <p className="free-months">
-                        {!monthly ? "2 months free" : ""}
+                            {!monthly ? "2 months free" : ""}
                     </p>
                 </div>
 
@@ -69,12 +73,14 @@ const Step2 = () => {
                     className={`pro ${chosenPlan === 'Pro' ? 'chosen' : ''}`} onClick={() => addClass('Pro')}>
                     
                     <img src={proIcon} alt="" />
-                    <p className="name">Pro</p>
-                    <p className="price">
-                        {monthly ? "$15" : "$150"}/{monthly ? "mo" : "yr"}
+                    <p className='mobile'>
+                        <p className="name">Pro</p>
+                        <p className="price">
+                            {monthly ? "$15" : "$150"}/{monthly ? "mo" : "yr"}
+                        </p>
                     </p>
                     <p className="free-months">
-                        {!monthly ? "2 months free" : ""}
+                            {!monthly ? "2 months free" : ""}
                     </p>
                 </div>
             </div>

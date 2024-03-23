@@ -17,7 +17,7 @@ function Step1() {
         email: yup.string().email("Please enter a valid email").required("Please enter a valid email"),
 
         phoneNumber: yup.string()
-            .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
+            .matches(/^\d{10}$/, "Please enter a valid phone number")
             .required("Please enter a valid phone number")
     });
 

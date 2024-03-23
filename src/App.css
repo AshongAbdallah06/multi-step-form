@@ -400,7 +400,7 @@ input::placeholder {
         border-radius: 10px;
         position: absolute;
         width: 80%;
-        height: 90vh;
+        height: 100vh;
         margin: 0;
         top: 120px;
         box-shadow: 0 0 10px rgba(151, 151, 151, 0.5);

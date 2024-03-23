@@ -10,6 +10,21 @@ import { createContext, useState } from 'react';
 export const AppContext = createContext();
 
 function App() {
+
+
+    const [ summaryDetails, setSummaryDetails] = useState({
+        plan: {
+            type: null,
+            price: null
+        },
+        addon: {
+
+        },
+        total: null
+    });
+
+
+
     const [monthly, setMonthly] = useState(true);
     const [chosenPlan, setChosenPlan] = useState('');
     const [addOns, setAddOns] = useState({
@@ -29,9 +44,11 @@ function App() {
         setChosenPlan(nameOfClass);
     };
 
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [userDetails, setUserDetails] = useState({
+        fullName: null,
+        email: null,
+        phoneNumber: null
+    });
 
     return (
         <main className="App">
@@ -40,17 +57,15 @@ function App() {
                     { 
                         monthly, 
                         setMonthly, 
-                        fullName, 
-                        setFullName, 
-                        email, 
-                        setEmail, 
-                        phoneNumber, 
-                        setPhoneNumber, 
+                        userDetails,
+                        setUserDetails,
                         chosenPlan, 
                         setChosenPlan,
                         addClass,
                         addOns, 
-                        handleToggle
+                        handleToggle,
+                        summaryDetails,
+                        setSummaryDetails
                     }
                 }>
                 <Router>

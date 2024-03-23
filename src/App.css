@@ -297,3 +297,68 @@ input::placeholder {
     color: hsl(231, 11%, 63%);
     font-size: 15px;
 }
+
+
+/* STEP 4 */
+.summary {
+    margin-top: 50px;
+    padding: 0 50px;
+}
+
+.summary-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top {
+    border-bottom: 1px solid hsl(229, 24%, 87%);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.summary-items div {
+    /* font-weight: 600; */
+}
+
+.summary-items .name {
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.plan-price {
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.change {
+    text-decoration: underline;
+    margin-top: 5px;
+    color: hsl(231, 11%, 63%);
+    cursor: pointer;
+}
+
+.addon {
+    margin-bottom: 25px;
+    color: hsl(231, 11%, 63%);
+}
+
+.addon-price {
+    color: hsl(213, 96%, 18%);
+}
+
+.total {
+    margin-top: 50px;
+}
+
+.total-label {
+    color: hsl(231, 11%, 63%);
+}
+
+.total-price {
+    font-weight: 700;
+    font-size: 20px;
+    color: hsl(243, 100%, 62%);
+}

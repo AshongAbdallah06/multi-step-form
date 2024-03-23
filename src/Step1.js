@@ -9,14 +9,7 @@ function Step1() {
     const navigate = useNavigate(); 
 
     const 
-        { 
-            fullName, 
-            setFullName, 
-            email, 
-            setEmail,
-            phoneNumber,
-            setPhoneNumber 
-        } = useContext(AppContext);
+        { userDetails, setUserDetails } = useContext(AppContext);
 
     const schema = yup.object().shape({
         name: yup.string().min(3, "Name must be at least 3 characters").required("Please enter a valid name"),
@@ -56,8 +49,8 @@ function Step1() {
                     <input 
                         type="text" 
                         {...register("name")} 
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        value={userDetails.fullName}
+                        onChange={(e) => setUserDetails({...userDetails, fullName: e.target.value})}
                         placeholder="e.g. Stephen King" 
                     />
                     <p className="error">{errors.name?.message}</p>
@@ -68,8 +61,8 @@ function Step1() {
                     <input 
                         type="email" 
                         {...register("email")} 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={userDetails.email}
+                        onChange={(e) => setUserDetails({...userDetails, email: e.target.value})}
                         placeholder="e.g. stephenking@lorem.com"  
                     />
                     <p className="error">{errors.email?.message}</p>
@@ -83,8 +76,8 @@ function Step1() {
                         max={10}
                         placeholder="e.g. 0234567891"  
                         {...register("phoneNumber")} 
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        value={userDetails.phoneNumber}
+                        onChange={(e) => setUserDetails({...userDetails, phoneNumber: e.target.value})}
                     />
                     <p className="error">{errors.phoneNumber?.message}</p>
                 </div>

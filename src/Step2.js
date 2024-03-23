@@ -35,7 +35,9 @@ const Step2 = () => {
 
                         <img src={arcadeIcon} alt="" />
                         <p className="name">Arcade</p>
-                        <p className="price">$9/{monthly ? "mo" : "yr"}</p>
+                        <p className="price">
+                            {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
+                        </p>
                         <p className="free-months">
                             {!monthly ? "2 months free" : ""}
                         </p>
@@ -46,7 +48,9 @@ const Step2 = () => {
 
                     <img src={advancedIcon} alt="" />
                     <p className="name">Advanced</p>
-                    <p className="price">$12/{monthly ? "mo" : "yr"}</p>
+                    <p className="price">
+                        {monthly ? "$12" : "$120"}/{monthly ? "mo" : "yr"}
+                    </p>
                     <p className="free-months">
                         {!monthly ? "2 months free" : ""}
                     </p>
@@ -57,7 +61,9 @@ const Step2 = () => {
                     
                     <img src={proIcon} alt="" />
                     <p className="name">Pro</p>
-                    <p className="price">$15/{monthly ? "mo" : "yr"}</p>
+                    <p className="price">
+                        {monthly ? "$15" : "$150"}/{monthly ? "mo" : "yr"}
+                    </p>
                     <p className="free-months">
                         {!monthly ? "2 months free" : ""}
                     </p>
@@ -65,13 +71,21 @@ const Step2 = () => {
             </div>
 
             <div className='duration'>
-                <span className="monthly" style={{ color: !monthIsToggled ? 'hsl(231, 11%, 63%)' : "hsl(213, 96%, 18%)"}}>Monthly</span>
+                <span 
+                    className="monthly" 
+                    style={{ color: !monthIsToggled ? 'hsl(231, 11%, 63%)' : "hsl(213, 96%, 18%)"}}>
+                        Monthly
+                </span>
 
                 <button className='toggle' onClick={handleToggle}>
                     <div className={`${monthly ? "white" : "animation"}`}></div>
                 </button>
 
-                <span className="yearly" style={{ color: monthIsToggled ? 'hsl(231, 11%, 63%)' : "hsl(213, 96%, 18%)"}}>Yearly</span>
+                <span 
+                    className="yearly" 
+                    style={{ color: monthIsToggled ? 'hsl(231, 11%, 63%)' : "hsl(213, 96%, 18%)"}}>
+                        Yearly
+                </span>
             </div>
 
             <div className="bottom">

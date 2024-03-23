@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import arcadeIcon from './images/icon-arcade.svg';
 import advancedIcon from './images/icon-advanced.svg';
 import proIcon from './images/icon-pro.svg'
@@ -11,7 +11,8 @@ const Step2 = () => {
         monthly, 
         setMonthly, 
         chosenPlan, 
-        addClass 
+        addClass,
+        // setChosenPlanPrice 
     } = useContext(AppContext);
     const [monthIsToggled, setMonthIsToggled] = useState(true);
 
@@ -19,6 +20,8 @@ const Step2 = () => {
         setMonthIsToggled(!monthIsToggled);
         setMonthly(!monthly);
     };
+
+
 
     return (
         <div className="right-section">
@@ -31,21 +34,27 @@ const Step2 = () => {
 
             <div className="plans">
                 <div 
-                    className={`arcade ${chosenPlan === 'arcade' ? 'chosen' : ''}`} onClick={() => addClass('arcade')}>
-
-                        <img src={arcadeIcon} alt="" />
-                        <p className="name">Arcade</p>
-                        <p className="price">
-                            {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
-                        </p>
-                        <p className="free-months">
-                            {!monthly ? "2 months free" : ""}
-                        </p>
+                    className={`arcade ${chosenPlan === 'Arcade' ? 'chosen' : ''}`} 
+                    onClick={() => {
+                        addClass('Arcade');
+                    }}
+                >
+                    <img src={arcadeIcon} alt="" />
+                    <p className="name">Arcade</p>
+                    <p className="price">
+                        {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
+                    </p>
+                    <p className="free-months">
+                        {!monthly ? "2 months free" : ""}
+                    </p>
                 </div>
 
                 <div 
-                    className={`advanced ${chosenPlan === 'advanced' ? 'chosen' : ''}`} onClick={() => addClass('advanced')}>
-
+                    className={`advanced ${chosenPlan === 'Advanced' ? 'chosen' : ''}`} 
+                    onClick={() => {
+                        addClass('Advanced')
+                    }}
+                >
                     <img src={advancedIcon} alt="" />
                     <p className="name">Advanced</p>
                     <p className="price">
@@ -57,7 +66,7 @@ const Step2 = () => {
                 </div>
 
                 <div
-                    className={`pro ${chosenPlan === 'pro' ? 'chosen' : ''}`} onClick={() => addClass('pro')}>
+                    className={`pro ${chosenPlan === 'Pro' ? 'chosen' : ''}`} onClick={() => addClass('Pro')}>
                     
                     <img src={proIcon} alt="" />
                     <p className="name">Pro</p>

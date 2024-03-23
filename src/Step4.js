@@ -4,7 +4,7 @@ import { AppContext } from './App';
 
 const Step2 = () => {
 
-    const { summaryDetails, setSummaryDetails } = useContext(AppContext)
+    const { chosenPlan, monthly } = useContext(AppContext)
 
     return (
         <div className="right-section">
@@ -18,27 +18,37 @@ const Step2 = () => {
             <div className='summary'>
                 <div className='summary-items top'>
                     <div>
-                        <div className="name">Arcade (Monthly)</div>
+                        <div className="name">
+                            {chosenPlan === '' ? "Arcade" : chosenPlan} ({monthly ? "Monthly" : "Yearly"})
+                        </div>
                         <Link to='/select-your-plan'>                    
                             <div className="change">Change</div>
                         </Link>
                     </div>
-                    <div className='plan-price'>$9/mo</div>
+                    <div className='plan-price'>
+                        $9{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                    </div>
                 </div>
                 
                 <div className='summary-items'>
                     <div className='addon'>Online service</div>
-                    <div className='addon-price'>$1/mo</div>
+                    <div className='addon-price'>
+                        $1{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                    </div>
                 </div>
 
                 <div className='summary-items'>
                     <div className='addon'>Larger storage</div>
-                    <div className='addon-price'>$2/mo</div>
+                    <div className='addon-price'>
+                        $2{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                    </div>
                 </div>
 
                 <div className='summary-items total'>
                     <div className='total-label'>Total (per month)</div>
-                    <div className='total-price'>$12/mo</div>
+                    <div className='total-price'>
+                        $12{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                    </div>
                 </div>
             </div>
 

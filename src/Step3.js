@@ -25,7 +25,7 @@ const Step3 = () => {
                         <p className='label'>Online service</p>
                         <p className='info'>Access to multiplayer games</p>
                     </div>
-                    <span>+$1/{monthly ? "mo" : "yr"}</span>
+                    <span>+$1{monthly ? '' : "0"}/{monthly ? "mo" : "yr"}</span>
                 </div>
 
                 <div
@@ -37,7 +37,7 @@ const Step3 = () => {
                         <p className='label'>Larger storage</p>
                         <p className='info'>Extra 1TB of cloud drive</p>
                     </div>
-                    <span>+$2/{monthly ? "mo" : "yr"}</span>
+                    <span>+$2{monthly ? '' : "0"}/{monthly ? "mo" : "yr"}</span>
                 </div>
 
                 <div
@@ -48,7 +48,7 @@ const Step3 = () => {
                         <p className='label'>Customizable profile</p>
                         <p className='info'>Custom theme on your profile</p>
                     </div>
-                    <span>+$2/{monthly ? "mo" : "yr"}</span>
+                    <span>+$2{monthly ? '' : "0"}/{monthly ? "mo" : "yr"}</span>
                 </div>
             </div>
 

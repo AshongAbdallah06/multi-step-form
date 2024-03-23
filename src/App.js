@@ -12,19 +12,6 @@ export const AppContext = createContext();
 function App() {
 
 
-    const [ summaryDetails, setSummaryDetails] = useState({
-        plan: {
-            type: null,
-            price: null
-        },
-        addon: {
-
-        },
-        total: null
-    });
-
-
-
     const [monthly, setMonthly] = useState(true);
     const [chosenPlan, setChosenPlan] = useState('');
     const [addOns, setAddOns] = useState({
@@ -61,11 +48,11 @@ function App() {
                         setUserDetails,
                         chosenPlan, 
                         setChosenPlan,
+                        // chosenPlanPrice, 
+                        // setChosenPlanPrice,
                         addClass,
                         addOns, 
-                        handleToggle,
-                        summaryDetails,
-                        setSummaryDetails
+                        handleToggle
                     }
                 }>
                 <Router>

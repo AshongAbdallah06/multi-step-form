@@ -309,6 +309,8 @@ input::placeholder {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    vertical-align: top;
+    margin-bottom: 15px;
 }
 
 .top {
@@ -336,8 +338,15 @@ input::placeholder {
     cursor: pointer;
 }
 
+.addon-selected {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .addon {
-    margin-bottom: 25px;
+    font-size: 18px;
+    margin-bottom: 0;
     color: hsl(231, 11%, 63%);
 }
 

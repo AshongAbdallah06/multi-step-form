@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import arcadeIcon from './images/icon-arcade.svg';
 import advancedIcon from './images/icon-advanced.svg';
 import proIcon from './images/icon-pro.svg'
@@ -12,7 +12,7 @@ const Step2 = () => {
         setMonthly, 
         chosenPlan, 
         addClass,
-        // setChosenPlanPrice 
+        handlePrice 
     } = useContext(AppContext);
     const [monthIsToggled, setMonthIsToggled] = useState(true);
 
@@ -20,7 +20,6 @@ const Step2 = () => {
         setMonthIsToggled(!monthIsToggled);
         setMonthly(!monthly);
     };
-
 
 
     return (
@@ -37,6 +36,7 @@ const Step2 = () => {
                     className={`arcade ${chosenPlan === 'Arcade' ? 'chosen' : ''}`} 
                     onClick={() => {
                         addClass('Arcade');
+                        handlePrice("$9");
                     }}
                 >
                     <img src={arcadeIcon} alt="" />
@@ -47,14 +47,15 @@ const Step2 = () => {
                         </p>
                     </p>
                     <p className="free-months">
-                            {!monthly ? "2 months free" : ""}
+                        {!monthly ? "2 months free" : ""}
                     </p>
                 </div>
 
                 <div 
                     className={`advanced ${chosenPlan === 'Advanced' ? 'chosen' : ''}`} 
                     onClick={() => {
-                        addClass('Advanced')
+                        addClass('Advanced');
+                        handlePrice("$12");
                     }}
                 >
                     <img src={advancedIcon} alt="" />
@@ -70,7 +71,10 @@ const Step2 = () => {
                 </div>
 
                 <div
-                    className={`pro ${chosenPlan === 'Pro' ? 'chosen' : ''}`} onClick={() => addClass('Pro')}>
+                    className={`pro ${chosenPlan === 'Pro' ? 'chosen' : ''}`} onClick={() => {
+                        addClass('Pro'); 
+                        handlePrice("$15");
+                    }}>
                     
                     <img src={proIcon} alt="" />
                     <p className='mobile'>
@@ -105,8 +109,11 @@ const Step2 = () => {
 
             <div className="bottom">
                 <Link to='/' className='go-back'>Go Back</Link>
-                <Link to='/add-ons'>
-                        <button className="next">Next Step</button>
+                <Link to={{
+                    pathname: '/add-ons',
+                    state: { chosenPlan, monthly }
+                }}>
+                    <button className="next">Next Step</button>
                 </Link>
             </div>
         </div>

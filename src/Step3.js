@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from './App';
 
@@ -20,7 +20,7 @@ const Step3 = () => {
                     className='cont'
                     onClick={() => handleToggle('onlineService')}
                 >
-                    <input type="checkbox" checked={addOns.onlineService} readOnly />
+                    <input type="checkbox" checked={addOns.onlineService.selected} readOnly />
                     <div className='text'>
                         <p className='label'>Online service</p>
                         <p className='info'>Access to multiplayer games</p>
@@ -32,7 +32,7 @@ const Step3 = () => {
                     className='cont'
                     onClick={() => handleToggle('largerStorage')}
                 >
-                    <input type="checkbox" checked={addOns.largerStorage} readOnly />
+                    <input type="checkbox" checked={addOns.largerStorage.selected} readOnly />
                     <div className='text'>
                         <p className='label'>Larger storage</p>
                         <p className='info'>Extra 1TB of cloud drive</p>
@@ -43,7 +43,7 @@ const Step3 = () => {
                 <div
                     className='cont'
                     onClick={() => handleToggle('customizableProfile')}>
-                    <input type="checkbox" checked={addOns.customizableProfile} readOnly />
+                    <input type="checkbox" checked={addOns.customizableProfile.selected} readOnly />
                     <div className='text'>
                         <p className='label'>Customizable profile</p>
                         <p className='info'>Custom theme on your profile</p>
@@ -54,7 +54,7 @@ const Step3 = () => {
 
             <div className="bottom">
                 <Link to='/select-your-plan' className='go-back'>Go Back</Link>
-                <Link to='/summary'>
+                <Link to={{ pathname: '/summary', state: { addOns } }}>
                     <button className="next">Next Step</button>
                 </Link>
             </div>

@@ -2,9 +2,13 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from './App';
 
-const Step2 = () => {
+const Step4 = () => {
 
-    const { chosenPlan, monthly } = useContext(AppContext)
+    const { chosenPlan, monthly, planPrice, addOns } = useContext(AppContext);
+
+    const totalAddOnPrice = Object.values(addOns)
+    .filter(addOn => addOn.selected) // Filter selected add-ons
+    .reduce((total, addOn) => total + addOn.price, 0); // Sum prices
 
     return (
         <div className="right-section">
@@ -19,35 +23,42 @@ const Step2 = () => {
                 <div className='summary-items top'>
                     <div>
                         <div className="name">
-                            {chosenPlan === '' ? "Arcade" : chosenPlan} ({monthly ? "Monthly" : "Yearly"})
+                            {chosenPlan} ({monthly ? "Monthly" : "Yearly"})
                         </div>
                         <Link to='/select-your-plan'>                    
                             <div className="change">Change</div>
                         </Link>
                     </div>
                     <div className='plan-price'>
-                        $9{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                        ${planPrice === '' ? "9" : planPrice}{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
                     </div>
                 </div>
                 
-                <div className='summary-items'>
-                    <div className='addon'>Online service</div>
-                    <div className='addon-price'>
-                        $1{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
-                    </div>
+                <div>
+                    <div className="addon-selected">
+                        {Object.entries(addOns).map(([
+                            addOn, { 
+                                selected, 
+                                price, 
+                                name 
+                            }]) => (
+                            selected && (
+                                <div className='summary-items' key={addOn}>
+                                    <div className='addon'>{name}</div>
+                                    <div className='addon-price'>
+                                        +${price}{monthly ? '' : "0"}/{monthly ? "mo" : "yr"}
+                                    </div>
+                                </div>
+                            )
+                        ))}
+                    </div>                    
                 </div>
 
-                <div className='summary-items'>
-                    <div className='addon'>Larger storage</div>
-                    <div className='addon-price'>
-                        $2{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
-                    </div>
-                </div>
 
                 <div className='summary-items total'>
                     <div className='total-label'>Total (per month)</div>
                     <div className='total-price'>
-                        $12{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                        +${planPrice + totalAddOnPrice}{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
                     </div>
                 </div>
             </div>
@@ -62,4 +73,4 @@ const Step2 = () => {
     )
 }
 
-export default Step2
+export default Step4;

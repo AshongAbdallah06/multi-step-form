@@ -17,17 +17,23 @@ function App() {
     const [monthly, setMonthly] = useState(true);
     const [chosenPlan, setChosenPlan] = useState('');
     const [addOns, setAddOns] = useState({
-        onlineService: false,
-        largerStorage: false,
-        customizableProfile: false
+        onlineService: { name: "Online Service", selected: false, price: 1 },
+        largerStorage: { name: "Larger Storage", selected: false, price: 2 },
+        customizableProfile: { name: "Customizable Profile", selected: false, price: 2 }
     });
 
     const handleToggle = (addOn) => {
         setAddOns(prevState => ({
             ...prevState,
-            [addOn]: !prevState[addOn]
+            [addOn]: {
+                ...prevState[addOn],
+                selected: !prevState[addOn].selected,
+                price: prevState[addOn].price,
+                name: prevState[addOn].name
+            }
         }));
     };
+    
 
     const addClass = (nameOfClass) => {
         setChosenPlan(nameOfClass);
@@ -38,6 +44,12 @@ function App() {
         email: null,
         phoneNumber: null
     });
+
+
+    const [planPrice, setPlanPrice] = useState("");
+    const handlePrice = (price) => {
+        setPlanPrice(parseFloat(price.replace('$', '')));
+    }
 
 
     return (
@@ -52,16 +64,17 @@ function App() {
                         chosenPlan, 
                         setChosenPlan,
                         addClass,
-                        addOns, 
-                        handleToggle
+                        addOns,
+                        handleToggle,
+                        planPrice,
+                        handlePrice
                     }
                 }>
                 <Router>
                 <picture>
-                    <source srcset={desktopSidebar} media="(min-width: 930px)" />
-                    <img className='header-img' src={mobileSidebar} />
+                    <source srcSet={desktopSidebar} media="(min-width: 930px)" />
+                    <img className='header-img' src={mobileSidebar} alt='sidebar' />
                 </picture>
-                {/* <img src={} alt="" className='sidebar-img' /> */}
 
                     <div className='steps'>
                         <div to='/' className='step'>

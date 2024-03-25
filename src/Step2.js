@@ -40,12 +40,12 @@ const Step2 = () => {
                     }}
                 >
                     <img src={arcadeIcon} alt="" />
-                    <p className='mobile'>
+                    <span className='mobile'>
                         <p className="name">Arcade</p>
                         <p className="price">
                             {monthly ? "$9" : "$90"}/{monthly ? "mo" : "yr"}
                         </p>
-                    </p>
+                    </span>
                     <p className="free-months">
                         {!monthly ? "2 months free" : ""}
                     </p>

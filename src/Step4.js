@@ -23,14 +23,14 @@ const Step4 = () => {
                 <div className='summary-items top'>
                     <div>
                         <div className="name">
-                            {chosenPlan} ({monthly ? "Monthly" : "Yearly"})
+                            {chosenPlan === '' ? "Select Plan" : chosenPlan} ({monthly ? "Monthly" : "Yearly"})
                         </div>
                         <Link to='/select-your-plan'>                    
                             <div className="change">Change</div>
                         </Link>
                     </div>
                     <div className='plan-price'>
-                        ${planPrice === '' ? "9" : planPrice}{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
+                        ${planPrice === '' ? "0" : planPrice}{monthly ? '' : "0"}/{monthly ? 'mo' : "yr"}
                     </div>
                 </div>
                 

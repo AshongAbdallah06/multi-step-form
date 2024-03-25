@@ -7,6 +7,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import { createContext, useState } from 'react';
+import Step5 from './Step5';
 
 export const AppContext = createContext();
 
@@ -102,6 +103,7 @@ function App() {
                         <Route path='/select-your-plan' element={<Step2 />} />
                         <Route path='/add-ons' element={<Step3 />} />
                         <Route path='/summary' element={<Step4 />} />
+                        <Route path='/thank-you' element={<Step5 />} />
                     </Routes>
                 </Router>
             </AppContext.Provider>

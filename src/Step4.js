@@ -54,7 +54,9 @@ const Step2 = () => {
 
             <div className="bottom">
                 <Link to='/add-ons' className='go-back'>Go Back</Link>
-                <button className="next">Confirm</button>
+                <Link to='/thank-you'>
+                    <button className="next">Confirm</button>                
+                </Link>
             </div>
         </div>
     )
